@@ -2,27 +2,28 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class CandidaturaPivot extends Model
+class CandidaturaPivot extends Pivot
 {
-    protected $table = 'candidatura_pivot';
-
+    protected $table = 'candidatura_pivot'; 
+    
     protected $fillable = [
-        'candidatura_id',
+        'candidato_id',  
         'vaga_id',
         'data_inscricao',
+        'status_candidatura' 
     ];
 
     public $timestamps = true;
 
-    public function candidatura()
+    public function candidato()
     {
-        return $this->belongsTo(Candidato::class, 'candidato_id');
+        return $this->belongsTo(Candidato::class);
     }
 
     public function vaga()
     {
-        return $this->belongsTo(Vaga::class, 'vaga_id');
+        return $this->belongsTo(Vaga::class);
     }
 }

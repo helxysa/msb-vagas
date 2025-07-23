@@ -41,7 +41,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data # Persiste os dados do banco
     ports:
-      - "5432:5432" # Permite conectar ao banco a partir do seu computador
+      - "5433:5433" # Permite conectar ao banco a partir do seu computador
     networks:
       - laravel
 

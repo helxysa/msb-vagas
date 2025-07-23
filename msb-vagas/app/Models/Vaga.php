@@ -19,4 +19,13 @@ class Vaga extends Model
         'remuneracao',
         'modalidade',
     ];
+
+
+    public function candidatos()
+    {
+        return $this->belongsToMany(Candidato::class, 'candidatura_pivot')
+                    ->using(CandidaturaPivot::class)
+                    ->withPivot(['data_inscricao', 'status_candidatura'])
+                    ->withTimestamps();
+    }
 }
